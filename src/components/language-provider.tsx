@@ -24,7 +24,6 @@ export interface Translations {
   terms: string;
   trust: string;
   feedback: string;
-  admin: string;
 }
 
 export const TRANSLATIONS: Record<Language, Translations> = {
@@ -50,7 +49,6 @@ export const TRANSLATIONS: Record<Language, Translations> = {
     terms: "ব্যবহারের শর্তাবলী",
     trust: "স্বচ্ছতা কেন্দ্র",
     feedback: "মতামত ও সংশোধন",
-    admin: "এডমিন কনসোল",
   },
   en: {
     tagline: "Simplified Citizen Services Guide",
@@ -74,7 +72,6 @@ export const TRANSLATIONS: Record<Language, Translations> = {
     terms: "Terms of Use",
     trust: "Trust Center",
     feedback: "Feedback & Corrections",
-    admin: "Admin Console",
   },
 };
 

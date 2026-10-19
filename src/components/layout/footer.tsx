@@ -42,9 +42,6 @@ export function Footer() {
           <Link href="/feedback" className="hover:text-foreground transition-colors">
             {t.feedback}
           </Link>
-          <Link href="/admin" className="hover:text-foreground transition-colors">
-            {t.admin}
-          </Link>
         </div>
       </div>
     </footer>
