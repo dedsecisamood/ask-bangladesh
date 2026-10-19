@@ -21,9 +21,6 @@ export function Header() {
             <span className="font-bold text-base leading-tight tracking-tight text-foreground">
               Ask Bangladesh
             </span>
-            <span className="text-[10px] text-muted-foreground font-medium">
-              {t.tagline}
-            </span>
           </div>
         </Link>
 
