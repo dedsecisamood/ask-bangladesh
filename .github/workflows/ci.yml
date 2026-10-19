@@ -1,0 +1,49 @@
+name: Production CI/CD Pipeline
+
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+    branches: [main, master]
+
+jobs:
+  verify:
+    name: Code Quality & Automated Tests
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js 20.x
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v3
+        with:
+          version: 12.14.0
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Typecheck
+        run: pnpm typecheck
+
+      - name: Vitest Unit & Integration Tests
+        run: pnpm test
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Python Ingestion Tests
+        run: python -m unittest discover ingestion/tests
+
+      - name: Next.js Production Build
+        run: pnpm build
+        env:
+          DATABASE_URL: "postgresql://postgres:postgres@localhost:5432/test"
+          ADMIN_JWT_SECRET: "test-secret-at-least-32-characters-long"
