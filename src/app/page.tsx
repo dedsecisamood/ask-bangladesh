@@ -9,14 +9,20 @@ export default function HomePage() {
 
   return (
     <main className="flex-1 flex flex-col items-center justify-center p-4 md:p-12 text-center max-w-4xl mx-auto">
-      {/* Disclaimer Banner */}
-      <div className="mb-6 inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-50 dark:bg-emerald-950/40 text-emerald-800 dark:text-emerald-300 text-xs md:text-sm border border-emerald-200 dark:border-emerald-800 shadow-sm">
-        <ShieldCheck className="w-4 h-4 text-emerald-600 dark:text-emerald-400" />
-        <span>{t.disclaimer}</span>
-      </div>
-
-      <h1 className="text-3xl md:text-5xl font-extrabold tracking-tight text-foreground mb-4">
-        {t.heroTitle}
+      <h1 className="text-3xl md:text-5xl font-extrabold tracking-tight text-foreground mb-4 max-w-3xl leading-[1.2]">
+        {language === "en" ? (
+          <>
+            Ask anything about
+            <br />
+            Bangladesh Public Services
+          </>
+        ) : (
+          <>
+            সরকারি সেবা নিয়ে
+            <br />
+            যে কোনো প্রশ্ন করুন
+          </>
+        )}
       </h1>
       
       <p className="text-base md:text-xl text-muted-foreground mb-8 max-w-2xl leading-relaxed">
