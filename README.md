@@ -1,443 +1,173 @@
-<![CDATA[<!-- markdownlint-disable MD033 MD041 -->
-<p align="center">
-  <img src="docs/assets/logo.png" alt="Ask Bangladesh Logo" width="120" />
-</p>
+<div align="center">
 
-<h1 align="center">Ask Bangladesh</h1>
+# Ask Bangladesh
 
-<p align="center">
-  <strong>The easiest way for Bangladeshis to understand and navigate government services.</strong>
-</p>
+### Government services, made simpler.
 
-<p align="center">
-  <a href="#features">Features</a> •
-  <a href="#tech-stack">Tech Stack</a> •
-  <a href="#getting-started">Getting Started</a> •
-  <a href="#environment-variables">Environment Variables</a> •
-  <a href="#testing">Testing</a> •
-  <a href="#deployment">Deployment</a> •
-  <a href="#contributing">Contributing</a> •
-  <a href="#license">License</a>
-</p>
+**An independent AI-powered platform in development to help Bangladeshis find, understand, and navigate government services with confidence.**
 
-<p align="center">
-  <!-- CI/CD -->
-  <img src="https://img.shields.io/github/actions/workflow/status/AskBangladesh/ask-bangladesh/ci.yml?branch=main&label=CI&style=flat-square" alt="CI Status" />
-  <!-- Coverage -->
-  <img src="https://img.shields.io/codecov/c/github/AskBangladesh/ask-bangladesh?style=flat-square&label=Coverage" alt="Coverage" />
-  <!-- License -->
-  <img src="https://img.shields.io/github/license/AskBangladesh/ask-bangladesh?style=flat-square" alt="License" />
-  <!-- Version -->
-  <img src="https://img.shields.io/github/package-json/v/AskBangladesh/ask-bangladesh?style=flat-square&label=Version" alt="Version" />
-</p>
+![Status](https://img.shields.io/badge/Status-In%20Development-F59E0B?style=flat-square)
+![Focus](https://img.shields.io/badge/Focus-Bangladesh-006A4E?style=flat-square)
+![Languages](https://img.shields.io/badge/Planned%20Languages-Bangla%20%7C%20Banglish%20%7C%20English-2563EB?style=flat-square)
 
----
+**[Our Vision](#our-vision) · [How It Will Work](#how-it-will-work) · [Core Capabilities](#core-capabilities) · [Roadmap](#development-roadmap) · [Get Started](#getting-started)**
 
-## What Is Ask Bangladesh?
+</div>
 
-**Ask Bangladesh** is an AI-powered platform that helps Bangladeshi citizens discover, understand, and navigate government services — in plain language. Whether you need to renew your passport, register a birth certificate, apply for a trade license, or understand your tax obligations, Ask Bangladesh translates dense bureaucratic processes into simple, step-by-step guidance.
+> **Development notice:** Ask Bangladesh is an evolving project. This README describes the product vision and planned capabilities, not a guarantee that every feature is available in the current codebase.
+>
+> **Independent project:** Ask Bangladesh is **not a Government of Bangladesh website** and is not affiliated with or endorsed by any government agency. Users should confirm important requirements, fees, and deadlines through the linked official sources.
 
-The platform uses **Retrieval-Augmented Generation (RAG)** to ground every answer in official government sources, ensuring accuracy and trustworthiness. Users can ask questions in **Bangla** (বাংলা), **Banglish** (romanized Bangla), or **English** — and receive clear, actionable answers with citations pointing back to the original government documents.
+## Our Vision
 
-> [!IMPORTANT]
-> **Ask Bangladesh is an independent, community-driven project.** It is **not** affiliated with, endorsed by, or operated by the Government of the People's Republic of Bangladesh or any of its agencies. All information is sourced from publicly available government documents and websites.
+Government information should be easy to find, easy to understand, and accessible to everyone.
 
----
+Yet finding the right government service can mean searching across different websites, learning unfamiliar terms, and reading complicated instructions. **Ask Bangladesh aims to make that journey simpler.**
 
-## Features
+Our goal is to build one clear, trustworthy place where people can ask a question in everyday language, discover the right service, understand the next steps, and reach the original government source.
 
-### 🗣️ Multilingual Conversational Interface
-- Ask questions in **Bangla**, **Banglish**, or **English**
-- Automatic language detection and contextual responses
-- Natural, conversational tone that avoids bureaucratic jargon
+**Less searching. Less confusion. More clarity.**
 
-### 🔍 RAG-Grounded Answers
-- Every response is backed by retrieved official government documents
-- No hallucinated or fabricated government information
-- Transparent source citations with direct links to official pages
+## Built for the People of Bangladesh
 
-### 📋 Step-by-Step Service Guides
-- Clear, numbered instructions for completing government procedures
-- Required document checklists
-- Fee breakdowns and estimated timelines
-- Nearest office locations and contact details (where available)
+Ask Bangladesh is being designed for people across Bangladesh and Bangladeshis living abroad—including students, parents, job seekers, landowners, entrepreneurs, older adults, and first-time internet users.
 
-### 🔒 Privacy-First Design
-- No user accounts required for basic usage
-- Minimal data collection — conversations are not stored by default
-- No tracking, no ads, no third-party analytics by default
-- Transparent data handling policies
+The planned experience is:
 
-### 📱 Mobile-First & Accessible
-- Optimized for low-end Android devices (2GB RAM, small screens)
-- Works on slow 2G/3G connections with aggressive caching
-- Lightweight page loads (< 100 KB initial JS bundle target)
-- WCAG 2.1 AA compliance
-- Bangla screen reader compatibility
+- **Multilingual:** Ask in **বাংলা**, **Banglish** (Bangla written in English letters), or **English**.
+- **Easy to use:** Clear explanations instead of complicated government language.
+- **Source-aware:** Direct links to relevant official pages, with verification details where available.
+- **Mobile-first:** Designed with smaller screens, slower connections, and low-end devices in mind.
+- **Accessible:** Built toward inclusive navigation and readable, understandable content.
+- **Privacy-conscious:** Basic information discovery is intended to work without mandatory registration.
 
-### 🏛️ Comprehensive Coverage
-- National ID (NID) and birth/death registration
-- Passport and visa services
-- Land and property registration
-- Business and trade licensing
-- Tax and VAT filing
-- Education board services
-- Utility connections and bill payments
-- Social safety net programs
 
----
+## How It Will Work
 
-## Tech Stack
+The planned Ask Bangladesh experience follows a simple path:
 
-| Layer | Technology |
-|---|---|
-| **Frontend** | [Next.js 14+](https://nextjs.org/) (App Router), [React 18+](https://react.dev/), [TypeScript 5+](https://www.typescriptlang.org/) |
-| **Styling** | [Tailwind CSS 3.4+](https://tailwindcss.com/), [shadcn/ui](https://ui.shadcn.com/) |
-| **Database** | [PostgreSQL 16+](https://www.postgresql.org/) with [pgvector](https://github.com/pgvector/pgvector) for semantic search |
-| **ORM** | [Drizzle ORM](https://orm.drizzle.team/) |
-| **AI/LLM** | [Vercel AI SDK](https://sdk.vercel.ai/), OpenAI / Anthropic / local models |
-| **Ingestion Pipeline** | [Python 3.11+](https://www.python.org/), document parsing, chunking, embedding generation |
-| **Validation** | [Zod](https://zod.dev/) for runtime schema validation |
-| **Testing** | [Vitest](https://vitest.dev/) (unit), [Playwright](https://playwright.dev/) (e2e), [Pytest](https://pytest.org/) (Python) |
-| **Runtime** | [Node.js 20+](https://nodejs.org/) |
-| **Package Manager** | [pnpm](https://pnpm.io/) |
+1. **Ask** — Describe a government-service question in Bangla, Banglish, or English.
+2. **Find** — Identify the relevant service and search approved official information sources.
+3. **Understand** — Receive a clear explanation and step-by-step guidance *only when supported by evidence*.
+4. **Verify** — Review direct source links and available verification details.
+5. **Continue** — Go to the appropriate official government service to take action.
 
----
+**A trustworthy “I couldn't verify that” is better than a confident wrong answer.** The system is being designed to show uncertainty instead of inventing procedures, fees, deadlines, or requirements.
 
-## Project Structure
+## Core Capabilities
 
-```
-ask-bangladesh/
-├── src/
-│   ├── app/                    # Next.js App Router pages and layouts
-│   │   ├── (chat)/             # Chat interface routes
-│   │   ├── api/                # API routes (search, chat, feedback)
-│   │   └── layout.tsx          # Root layout
-│   ├── components/
-│   │   ├── ui/                 # shadcn/ui primitives
-│   │   └── chat/               # Chat-specific components
-│   ├── lib/
-│   │   ├── ai/                 # LLM integration, prompt templates, RAG pipeline
-│   │   ├── db/                 # Database client, schema, migrations
-│   │   ├── services/           # Business logic and service layer
-│   │   ├── utils/              # Shared utilities
-│   │   └── validators/         # Zod schemas for input validation
-│   ├── hooks/                  # Custom React hooks
-│   ├── types/                  # Shared TypeScript type definitions
-│   └── config/                 # App configuration constants
-├── ingestion/
-│   ├── scrapers/               # Government website scrapers
-│   ├── parsers/                # Document parsers (PDF, HTML)
-│   ├── chunkers/               # Text chunking strategies
-│   ├── embedders/              # Embedding generation
-│   ├── loaders/                # Database loaders
-│   └── pipeline.py             # Orchestration entry point
-├── drizzle/
-│   └── migrations/             # SQL migration files
-├── public/                     # Static assets
-├── tests/
-│   ├── unit/                   # Vitest unit tests
-│   ├── e2e/                    # Playwright end-to-end tests
-│   └── fixtures/               # Shared test data
-├── docs/                       # Project documentation
-│   ├── architecture.md
-│   ├── api-reference.md
-│   └── assets/
-├── .env.example                # Environment variable template
-├── .gitignore
-├── AGENTS.md                   # AI agent instructions
-├── LICENSE                     # MIT License
-├── README.md                   # This file
-├── drizzle.config.ts           # Drizzle ORM configuration
-├── next.config.mjs             # Next.js configuration
-├── tailwind.config.ts          # Tailwind CSS configuration
-├── tsconfig.json               # TypeScript configuration
-├── vitest.config.ts            # Vitest configuration
-├── playwright.config.ts        # Playwright configuration
-├── package.json
-└── pnpm-lock.yaml
-```
+The long-term product plan brings together several connected parts:
 
----
+| Area | What we're building |
+| --- | --- |
+| **Government service directory** | Browse services by topic, agency, and category, even without using AI. |
+| **AI assistant** | Ask natural-language questions and receive explanations grounded in retrieved evidence. |
+| **Official-source references** | Link to relevant government pages and show source context and verification information. |
+| **Service guides** | Make supported processes easier to follow with clear, practical steps. |
+| **Multilingual experience** | Support Bangla, Banglish spelling variations, and English. |
+| **Feedback and corrections** | Give users a way to flag confusing, outdated, or inaccurate information. |
+| **Administrative tools** | Review sources, manage content, monitor freshness, and maintain quality. |
+
+These are **planned capabilities**. Their availability depends on implementation, testing, and release approval.
+
+### Initial Service Focus
+
+The first reliable information coverage is planned around three areas:
+
+1. **E-passport services**
+2. **National Identity Card (NID) services**
+3. **Land services and land development tax**
+
+The broader vision includes birth registration, driving licences, education, taxation, jobs, social welfare, healthcare, business registration, and other public services. **A category will not be presented as fully supported before its sources and guidance are verified.**
+
+## Trust Is a Product Requirement
+
+People may use this information to make important decisions. That makes accuracy, safety, and transparency essential—not optional.
+
+Ask Bangladesh is being developed around these principles:
+
+- **Official sources first.** Important government-service claims should be supported by relevant official evidence.
+- **Clear citations.** A useful answer should point to the specific source, not just an agency's homepage.
+- **No guessing.** Missing, outdated, or conflicting information should be acknowledged.
+- **Responsible data handling.** Minimize personal information and avoid asking for sensitive ID or passport numbers when unnecessary.
+- **Secure by design.** Treat retrieved content as untrusted data and protect against abuse, data leaks, and prompt injection.
+- **Respect for government systems.** Do not bypass authentication, CAPTCHAs, or access restrictions, or submit transactions without authorization.
+
+Ask Bangladesh is an **information and guidance project**, not a replacement for an official government portal.
+
+## Technology Direction
+
+The project plan uses a modern, maintainable architecture. The exact tools in use should always be confirmed against the repository's code and configuration.
+
+| Layer | Planned technologies and approach |
+| --- | --- |
+| **Web application** | Next.js, React, TypeScript, Tailwind CSS, shadcn/ui |
+| **API and validation** | Next.js Route Handlers, TypeScript, Zod |
+| **Data storage** | PostgreSQL, with pgvector for vector search where appropriate |
+| **Information processing** | Python, HTML/PDF extraction, controlled ingestion, document versioning |
+| **AI and search** | Retrieval-augmented generation (RAG), multilingual embeddings, keyword + semantic search, reranking |
+| **Quality assurance** | Unit, integration, end-to-end, security, accessibility, and multilingual evaluation |
+| **Deployment** | A managed hosting and database setup with monitoring, backups, and secure configuration |
+
+The architecture is designed to grow in stages instead of introducing unnecessary complexity early.
+
+## Development Roadmap
+
+Ask Bangladesh follows a phased plan, with progress determined by **verified outcomes**, not just completed tasks.
+
+| Stage | Phases | Focus |
+| --- | --- | --- |
+| **1. Build the foundation** | 0–2 | Architecture, project setup, and accessible public interface |
+| **2. Organize trusted information** | 3–6 | Database, service directory, controlled ingestion, and search |
+| **3. Deliver useful answers** | 7–8 | Source-grounded AI guidance and multilingual support |
+| **4. Prepare for public use** | 9–12 | Admin operations, security, testing, public beta, and deployment |
+
+**Longer-term possibilities:** voice assistance, regional guidance, document help, and authorized government integrations. These are future ideas—not available features or announced partnerships.
+
+> **Current progress:** The development roadmap is defined, but the latest completed phase and feature status are not established by this README. Check the repository's code, issues, and development records for verified progress.
 
 ## Getting Started
 
-### Prerequisites
-
-| Tool | Version | Purpose |
-|---|---|---|
-| **Node.js** | 20.x or later | JavaScript runtime |
-| **pnpm** | 9.x or later | Package manager |
-| **PostgreSQL** | 16.x or later | Database (with pgvector extension) |
-| **Python** | 3.11 or later | Ingestion pipeline |
-
-### Installation
-
-1. **Clone the repository**
-
-   ```bash
-   git clone https://github.com/AskBangladesh/ask-bangladesh.git
-   cd ask-bangladesh
-   ```
-
-2. **Install Node.js dependencies**
-
-   ```bash
-   pnpm install
-   ```
-
-3. **Set up the Python ingestion environment**
-
-   ```bash
-   cd ingestion
-   python -m venv .venv
-   source .venv/bin/activate      # Linux/macOS
-   .venv\Scripts\activate         # Windows
-   pip install -r requirements.txt
-   cd ..
-   ```
-
-4. **Set up environment variables**
-
-   ```bash
-   cp .env.example .env.local
-   ```
-
-   Fill in the required values — see [Environment Variables](#environment-variables) below.
-
-5. **Set up the database**
-
-   ```bash
-   # Ensure PostgreSQL is running and pgvector extension is available
-   pnpm db:push       # Apply schema to database
-   # OR
-   pnpm db:migrate    # Run migrations (production)
-   ```
-
-6. **Seed initial data** (optional — runs the ingestion pipeline)
-
-   ```bash
-   cd ingestion
-   python pipeline.py --source sample
-   cd ..
-   ```
-
-### Development
+To explore the code locally, clone the repository:
 
 ```bash
-pnpm dev
+git clone https://github.com/dedsecisamood/ask-bangladesh.git
+cd ask-bangladesh
 ```
 
-The app will be available at [http://localhost:3000](http://localhost:3000).
-
-### Useful Commands
-
-| Command | Description |
-|---|---|
-| `pnpm dev` | Start the development server |
-| `pnpm build` | Create a production build |
-| `pnpm start` | Start the production server |
-| `pnpm lint` | Run ESLint |
-| `pnpm format` | Format code with Prettier |
-| `pnpm type-check` | Run TypeScript compiler checks |
-| `pnpm test` | Run unit tests (Vitest) |
-| `pnpm test:e2e` | Run end-to-end tests (Playwright) |
-| `pnpm db:generate` | Generate migration files from schema changes |
-| `pnpm db:migrate` | Apply pending migrations |
-| `pnpm db:push` | Push schema directly (development) |
-| `pnpm db:studio` | Open Drizzle Studio (database GUI) |
-
----
-
-## Environment Variables
-
-Create a `.env.local` file in the project root with the following variables:
-
-### Application
-
-| Variable | Description | Required |
-|---|---|---|
-| `NEXT_PUBLIC_APP_URL` | Public URL of the application (e.g., `http://localhost:3000`) | Yes |
-| `NODE_ENV` | Environment: `development`, `test`, or `production` | Yes |
-
-### Database
-
-| Variable | Description | Required |
-|---|---|---|
-| `DATABASE_URL` | PostgreSQL connection string (e.g., `postgresql://user:pass@localhost:5432/askbd`) | Yes |
-| `DATABASE_POOL_MIN` | Minimum connection pool size (default: `2`) | No |
-| `DATABASE_POOL_MAX` | Maximum connection pool size (default: `10`) | No |
-
-### AI / LLM
-
-| Variable | Description | Required |
-|---|---|---|
-| `OPENAI_API_KEY` | OpenAI API key for embeddings and chat completions | Yes* |
-| `ANTHROPIC_API_KEY` | Anthropic API key (alternative LLM provider) | No* |
-| `AI_PROVIDER` | Active LLM provider: `openai`, `anthropic`, or `local` (default: `openai`) | No |
-| `EMBEDDING_MODEL` | Embedding model name (default: `text-embedding-3-small`) | No |
-| `CHAT_MODEL` | Chat completion model name (default: `gpt-4o-mini`) | No |
-| `AI_TEMPERATURE` | LLM temperature for chat responses (default: `0.3`) | No |
-| `AI_MAX_TOKENS` | Maximum tokens in LLM response (default: `1024`) | No |
-
-> \* At least one LLM provider API key is required.
-
-### Ingestion Pipeline (Python)
-
-| Variable | Description | Required |
-|---|---|---|
-| `INGESTION_DATABASE_URL` | PostgreSQL connection string for the ingestion pipeline | Yes |
-| `INGESTION_OPENAI_API_KEY` | OpenAI API key for generating embeddings during ingestion | Yes |
-| `INGESTION_CHUNK_SIZE` | Target chunk size in tokens (default: `512`) | No |
-| `INGESTION_CHUNK_OVERLAP` | Overlap between chunks in tokens (default: `64`) | No |
-
-### Rate Limiting
-
-| Variable | Description | Required |
-|---|---|---|
-| `RATE_LIMIT_WINDOW_MS` | Rate limit window in milliseconds (default: `60000`) | No |
-| `RATE_LIMIT_MAX_REQUESTS` | Max requests per window (default: `20`) | No |
-
-### Analytics (optional)
-
-| Variable | Description | Required |
-|---|---|---|
-| `NEXT_PUBLIC_ANALYTICS_ID` | Privacy-respecting analytics ID (e.g., Plausible, Umami) | No |
-
----
-
-## Testing
-
-### Unit Tests (Vitest)
+If the checked-in project uses **npm** and provides a `dev` script, the usual Next.js workflow is:
 
 ```bash
-# Run all unit tests
-pnpm test
-
-# Run in watch mode
-pnpm test:watch
-
-# Generate coverage report
-pnpm test:coverage
+npm install
+npm run dev
 ```
 
-### End-to-End Tests (Playwright)
+Then open **http://localhost:3000** in your browser.
 
-```bash
-# Install Playwright browsers (first time only)
-pnpm exec playwright install
+**Before running:** Check `package.json`, the repository's lockfile, and any existing setup documentation. Use the package manager and environment configuration actually defined in the project. Some services may require additional configuration; never commit `.env` files, API keys, or credentials.
 
-# Run e2e tests
-pnpm test:e2e
+## Contributing and Feedback
 
-# Run e2e tests with UI
-pnpm test:e2e --ui
+Ask Bangladesh is being developed as an independent project. Thoughtful feedback is welcome—especially from people familiar with Bangladesh's public services, Bangla accessibility, and citizen-facing technology.
 
-# Run a specific test file
-pnpm test:e2e tests/e2e/chat.spec.ts
-```
+If you notice an issue or have a suggestion, [open a GitHub issue](https://github.com/dedsecisamood/ask-bangladesh/issues). For government-service information, please include the relevant **official source URL** so it can be reviewed.
 
-### Python Tests (Pytest)
+For substantial code contributions, start with an issue to discuss the scope before opening a pull request.
 
-```bash
-cd ingestion
-source .venv/bin/activate
-pytest
-pytest --cov=. --cov-report=html    # with coverage
-```
+## Project Maintainer
 
----
-
-## Deployment
-
-### Production Build
-
-```bash
-pnpm build
-pnpm start
-```
-
-### Docker
-
-```bash
-docker compose up --build
-```
-
-### Recommended Hosting
-
-| Component | Recommended Platform |
-|---|---|
-| **Next.js App** | [Vercel](https://vercel.com/), [Railway](https://railway.app/), or self-hosted with Docker |
-| **PostgreSQL + pgvector** | [Supabase](https://supabase.com/), [Neon](https://neon.tech/), or self-hosted |
-| **Ingestion Pipeline** | Scheduled via cron job, GitHub Actions, or a task runner |
-
-### Pre-Deployment Checklist
-
-- [ ] All environment variables set in production environment
-- [ ] Database migrations applied (`pnpm db:migrate`)
-- [ ] Initial data ingested via the Python pipeline
-- [ ] SSL/TLS configured for all endpoints
-- [ ] Rate limiting enabled
-- [ ] Error monitoring connected (e.g., Sentry)
-- [ ] Performance monitoring enabled
-- [ ] CI/CD pipeline passing (lint, type-check, test)
-
----
-
-## Contributing
-
-We welcome contributions! Please read our contributing guidelines before submitting a pull request.
-
-### Quick Start
-
-1. Fork the repository
-2. Create a feature branch: `git checkout -b feat/your-feature`
-3. Make your changes following the conventions in [AGENTS.md](AGENTS.md)
-4. Write or update tests for your changes
-5. Ensure all checks pass: `pnpm lint && pnpm type-check && pnpm test`
-6. Commit with a conventional commit message: `git commit -m "feat: add passport renewal guide"`
-7. Push and open a pull request
-
-### Commit Message Format
-
-We use [Conventional Commits](https://www.conventionalcommits.org/):
-
-```
-feat: add new feature
-fix: correct a bug
-docs: update documentation
-style: formatting, no logic change
-refactor: restructure without behavior change
-test: add or update tests
-chore: tooling, dependencies, config
-perf: performance improvement
-ci: CI/CD pipeline changes
-```
-
-### Code of Conduct
-
-This project follows the [Contributor Covenant Code of Conduct](https://www.contributor-covenant.org/version/2/1/code_of_conduct/). By participating, you agree to uphold a welcoming, inclusive, and respectful environment.
-
----
+Created and maintained by **[@dedsecisamood](https://github.com/dedsecisamood)**.
 
 ## License
 
-This project is licensed under the **MIT License**. See [LICENSE](LICENSE) for details.
+A software license has not been confirmed for this repository. Until a license is published, please do not assume permission to reuse or redistribute the source code.
 
 ---
 
-## Disclaimer
+<div align="center">
 
-> [!CAUTION]
-> **Ask Bangladesh is an independent, community-driven open-source project.** It is **not** affiliated with, endorsed by, sponsored by, or officially connected to the Government of the People's Republic of Bangladesh or any of its ministries, departments, or agencies.
->
-> The information provided by this platform is sourced from **publicly available government documents and websites** and is intended for general informational purposes only. It does **not** constitute legal, financial, or professional advice. Government policies, fees, and procedures change frequently — always verify critical information directly with the relevant government office or official website before taking action.
->
-> The maintainers of this project make **no warranties** regarding the accuracy, completeness, or timeliness of the information provided.
+### 🇧🇩 A simpler way to understand public services.
 
----
+**Built for Bangladesh. Guided by evidence. Designed for people.**
 
-<p align="center">
-  Built with ❤️ for Bangladesh
-</p>
-]]>
+</div>
