@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { ShieldCheck, MessageSquare, Compass, FileText, Info } from "lucide-react";
 import { ThemeToggle } from "@/components/theme-toggle";
 import { LanguageToggle } from "@/components/language-toggle";
@@ -14,8 +15,15 @@ export function Header() {
       <div className="container flex h-16 max-w-6xl items-center justify-between px-4">
         {/* Brand */}
         <Link href="/" className="flex items-center gap-2.5 group">
-          <div className="w-9 h-9 rounded-xl bg-primary flex items-center justify-center text-primary-foreground font-bold shadow-sm group-hover:scale-105 transition-transform">
-            <span>বিডি</span>
+          <div className="relative w-9 h-9 flex items-center justify-center group-hover:scale-105 transition-transform">
+            <Image
+              src="/logo.png"
+              alt="Ask Bangladesh Logo"
+              width={36}
+              height={36}
+              className="object-contain"
+              priority
+            />
           </div>
           <div className="flex flex-col text-left">
             <span className="font-bold text-base leading-tight tracking-tight text-foreground">
